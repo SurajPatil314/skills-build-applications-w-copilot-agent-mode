@@ -23,7 +23,7 @@ function App() {
           <p className="eyebrow">OCTOFIT / FIELD NOTES</p>
           <h1>Move together.</h1>
         </div>
-        <span className="api-status"><i /> API connected locally</span>
+        <span className="api-status"><i /> API ready</span>
       </header>
       <nav className="app-nav" aria-label="Primary navigation">
         {navigation.map(([path, label]) => (

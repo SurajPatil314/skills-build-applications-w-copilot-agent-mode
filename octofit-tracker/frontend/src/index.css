@@ -30,6 +30,30 @@
   }
 }
 
+:root {
+  --mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+  --heading: Georgia, 'Times New Roman', serif;
+  font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+  color: #24302d;
+  background: #f6f3ed;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+a {
+  font: inherit;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --text: #9ca3af;
