@@ -4,7 +4,7 @@ The React 19 presentation tier uses Vite, Bootstrap, and `react-router-dom`.
 
 ## Configuration
 
-Define `VITE_CODESPACE_NAME` before starting Vite. Create `octofit-tracker/frontend/.env.local` with the Codespaces name:
+`VITE_CODESPACE_NAME` must be defined before starting Vite when the API is hosted in GitHub Codespaces. Create `octofit-tracker/frontend/.env.local` with the Codespaces name:
 
 ```env
 VITE_CODESPACE_NAME=your-codespace-name

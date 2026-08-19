@@ -8,11 +8,11 @@ import { API_BASE_URL, hasCodespaceApi } from './api.js';
 import './App.css';
 
 const navigation = [
-  { path: 'users', label: 'Members', component: Users },
-  { path: 'activities', label: 'Activities', component: Activities },
-  { path: 'teams', label: 'Teams', component: Teams },
-  { path: 'leaderboard', label: 'Leaderboard', component: Leaderboard },
-  { path: 'workouts', label: 'Workouts', component: Workouts },
+  { path: '/users', label: 'Members', component: Users },
+  { path: '/activities', label: 'Activities', component: Activities },
+  { path: '/teams', label: 'Teams', component: Teams },
+  { path: '/leaderboard', label: 'Leaderboard', component: Leaderboard },
+  { path: '/workouts', label: 'Workouts', component: Workouts },
 ];
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
       </header>
       <nav className="app-nav" aria-label="Primary navigation">
         {navigation.map(({ path, label }) => (
-          <NavLink key={path} to={`/${path}`} className={({ isActive }) => isActive ? 'active' : ''}>
+          <NavLink key={path} to={path} className={({ isActive }) => isActive ? 'active' : ''}>
             {label}
           </NavLink>
         ))}
@@ -36,7 +36,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/users" replace />} />
           {navigation.map(({ path, component: Component }) => (
-            <Route key={path} path={`/${path}`} element={<Component />} />
+            <Route key={path} path={path} element={<Component />} />
           ))}
         </Routes>
       </main>
