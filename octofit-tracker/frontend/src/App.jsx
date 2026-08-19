@@ -4,7 +4,7 @@ import Leaderboard from './components/Leaderboard.jsx';
 import Teams from './components/Teams.jsx';
 import Users from './components/Users.jsx';
 import Workouts from './components/Workouts.jsx';
-import { API_BASE_URL } from './api.js';
+import { API_BASE_URL, hasCodespaceApi } from './api.js';
 import './App.css';
 
 const navigation = [
@@ -23,7 +23,7 @@ function App() {
           <p className="eyebrow">OCTOFIT / FIELD NOTES</p>
           <h1>Move together.</h1>
         </div>
-        <span className="api-status"><i /> API ready</span>
+        <span className="api-status"><i /> {hasCodespaceApi ? 'API ready' : 'Local API fallback'}</span>
       </header>
       <nav className="app-nav" aria-label="Primary navigation">
         {navigation.map(([path, label]) => (

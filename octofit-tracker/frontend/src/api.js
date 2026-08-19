@@ -3,6 +3,19 @@ const codespaceName = import.meta.env.VITE_CODESPACE_NAME?.trim();
 export const API_BASE_URL = codespaceName
   ? `https://${codespaceName}-8000.app.github.dev`
   : 'http://localhost:8000';
+export const hasCodespaceApi = Boolean(codespaceName);
+
+function recordsFromPayload(payload) {
+  if (Array.isArray(payload)) return payload;
+  if (!payload || typeof payload !== 'object') return [];
+
+  for (const key of ['data', 'results', 'items']) {
+    const records = recordsFromPayload(payload[key]);
+    if (records.length > 0 || Array.isArray(payload[key])) return records;
+  }
+
+  return [];
+}
 
 export async function fetchResource(resource) {
   const response = await fetch(`${API_BASE_URL}/api/${resource}/`);
@@ -12,10 +25,5 @@ export async function fetchResource(resource) {
   }
 
   const payload = await response.json();
-  if (Array.isArray(payload)) return payload;
-  if (Array.isArray(payload.data)) return payload.data;
-  if (Array.isArray(payload.results)) return payload.results;
-  if (Array.isArray(payload.items)) return payload.items;
-
-  return [];
+  return recordsFromPayload(payload);
 }

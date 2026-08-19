@@ -5,6 +5,8 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
 import './index.css';
 
+document.title = 'OctoFit Tracker';
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
