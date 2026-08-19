@@ -8,11 +8,11 @@ import { API_BASE_URL, hasCodespaceApi } from './api.js';
 import './App.css';
 
 const navigation = [
-  ['users', 'Members', Users],
-  ['activities', 'Activities', Activities],
-  ['teams', 'Teams', Teams],
-  ['leaderboard', 'Leaderboard', Leaderboard],
-  ['workouts', 'Workouts', Workouts],
+  { path: 'users', label: 'Members', component: Users },
+  { path: 'activities', label: 'Activities', component: Activities },
+  { path: 'teams', label: 'Teams', component: Teams },
+  { path: 'leaderboard', label: 'Leaderboard', component: Leaderboard },
+  { path: 'workouts', label: 'Workouts', component: Workouts },
 ];
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
         <span className="api-status"><i /> {hasCodespaceApi ? 'API ready' : 'Local API fallback'}</span>
       </header>
       <nav className="app-nav" aria-label="Primary navigation">
-        {navigation.map(([path, label]) => (
+        {navigation.map(({ path, label }) => (
           <NavLink key={path} to={`/${path}`} className={({ isActive }) => isActive ? 'active' : ''}>
             {label}
           </NavLink>
@@ -35,7 +35,9 @@ function App() {
       <main className="app-main">
         <Routes>
           <Route path="/" element={<Navigate to="/users" replace />} />
-          {navigation.map(([path, , Component]) => <Route key={path} path={`/${path}`} element={<Component />} />)}
+          {navigation.map(({ path, component: Component }) => (
+            <Route key={path} path={`/${path}`} element={<Component />} />
+          ))}
         </Routes>
       </main>
       <footer className="app-footer">Data source: {API_BASE_URL}</footer>

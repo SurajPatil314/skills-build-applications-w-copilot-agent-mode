@@ -9,7 +9,7 @@ function recordsFromPayload(payload) {
   if (Array.isArray(payload)) return payload;
   if (!payload || typeof payload !== 'object') return [];
 
-  for (const key of ['data', 'results', 'items']) {
+  for (const key of ['data', 'results', 'items', 'records', 'docs']) {
     const records = recordsFromPayload(payload[key]);
     if (records.length > 0 || Array.isArray(payload[key])) return records;
   }

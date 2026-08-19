@@ -7,7 +7,9 @@ import './index.css';
 
 document.title = 'OctoFit Tracker';
 
-createRoot(document.getElementById('root')).render(
+const rootElement = document.getElementById('root');
+
+createRoot(rootElement).render(
   <StrictMode>
     <BrowserRouter>
       <App />
